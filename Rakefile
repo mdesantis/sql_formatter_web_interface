@@ -1,6 +1,6 @@
 require 'echoe'
 
-Echoe.new("rfql") do |p|
+Echoe.new("sql_formatter_web_interface") do |p|
   p.project     = 'sql_formatter_web_interface'
   p.author      = "De Santis Maurizio"
   p.email       = 'desantis.maurizio@gmail.com'
