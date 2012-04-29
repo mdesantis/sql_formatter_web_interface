@@ -10,7 +10,7 @@ require 'net/http'
 #   Being a web interface, it is _VERY_ unsafe sending data via HTTP
 #   to a service that could store informations about the requests; 
 #   this library should be used only with queries not including 
-#   sensitive data - did someone say <em>development database</em>?
+#   sensitive data - did someone say _development database_?
 #   </b>
 module SqlFormatterWebInterface
 
@@ -37,7 +37,7 @@ module SqlFormatterWebInterface
   #   sql = <<-SQL
   #            select user_id, count(*) as how_many from bboard where 
   #            not exists (select 1 from bboard_authorized_maintainers bam 
-  #            where bam.user_id = bboard.user_id) and posting_time + 60 > sysdate 
+  #            where bam.user_id = bboard.user_id) and posting_time ` 60 > sysdate 
   #            group by user_id order by how_many desc;
   #            SQL
   #   SqlFormatterWebInterface.format(sql) #=>
@@ -56,10 +56,10 @@ module SqlFormatterWebInterface
   # @param [Hash] options The options to pass to the web service (see 
   #                       http://sqlformat.appspot.com/api/ for informations about the
   #                       available options); it will be merged with {DEFAULT_OPTIONS}.
-  #                       The special option +:url+ can be used in order to specify 
-  #                       the URL of the request (if +nil+ {SQL_FORMATTER_URL} will be used)
+  #                       The special option `:url` can be used in order to specify 
+  #                       the URL of the request (if `nil` {SQL_FORMATTER_URL} will be used)
   #
-  # @return [String]      If +sql+ is a valid SQL a formatted copy of the string
+  # @return [String]      If `sql` is a valid SQL a formatted copy of the string
   #                       converted to the expected format, else an identical copy of the string
   # @raise [SocketError]  When the service cannot reach the setted URL
   def self.format(sql, options = {})

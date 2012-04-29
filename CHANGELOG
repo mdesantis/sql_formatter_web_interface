@@ -1,0 +1,1 @@
+v1.0.0. First release. Provides the SqlFormatterWebInterface::format and optionally the String#to_formatted_sql methods
