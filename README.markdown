@@ -1,7 +1,7 @@
 # SqlFormatterWebInterface
 
 ## Description
-{SqlFormatterWebInterface} lets you write this:
+This library lets you write this:
 
 ```ruby
 sql = <<-SQL
@@ -96,4 +96,4 @@ gem 'sql_formatter_web_interface', :require => 'sql_formatter_web_interface/to_f
 You can use `SqlFormatterWebInterface::format(sql, options)` or either `String#to_formatted_sql(options)`, where `options` is an hash with the options supported by the web service (see http://sqlformat.appspot.com/api/)
 
 ## License
-MIT (see {file:LICENSE})
+MIT (see [LICENSE](LICENSE))
