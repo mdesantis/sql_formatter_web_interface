@@ -1,8 +1,9 @@
 require 'echoe'
 
 Echoe.new("sql_formatter_web_interface") do |p|
+  p.url         = 'https://github.com/ProGNOMmers/sql_formatter_web_interface'
   p.project     = 'sql_formatter_web_interface'
-  p.author      = "De Santis Maurizio"
+  p.author      = "Maurizio De Santis"
   p.email       = 'desantis.maurizio@gmail.com'
   p.description = "SQL formatter web interface - Web interface for SQL formatting"
   p.summary     = "It lets you format SQL via web SQL formatting services"
