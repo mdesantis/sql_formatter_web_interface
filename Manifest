@@ -1,0 +1,14 @@
+CHANGELOG
+Gemfile
+Gemfile.lock
+LICENSE
+README.markdown
+Rakefile
+examples/multiple_inserts.sql
+examples/pg_view.sql
+examples/subquery.sql
+lib/sql_formatter_web_interface.rb
+lib/sql_formatter_web_interface/to_formatted_sql.rb
+spec/spec_helper.rb
+spec/sql_formatter_web_interface_spec.rb
+Manifest
