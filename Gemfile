@@ -4,6 +4,7 @@ group :development do
   gem 'yard'
   gem 'redcarpet'
   gem 'github-markup'
+  gem 'echoe'
 end
 
 group :test do

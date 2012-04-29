@@ -1,3 +1,13 @@
+require 'echoe'
+
+Echoe.new("rfql") do |p|
+  p.project     = 'sql_formatter_web_interface'
+  p.author      = "De Santis Maurizio"
+  p.email       = 'desantis.maurizio@gmail.com'
+  p.description = "SQL formatter web interface - Web interface for SQL formatting"
+  p.summary     = "It lets you format SQL via web SQL formatting services"
+end
+
 desc 'IRB console'
 task :irb do
   $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
@@ -7,6 +17,7 @@ task :irb do
   ARGV.clear
   IRB.start
 end
+
 desc 'run example'
 task :run_example, [:example_name, :options] do |t, args|
   $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
