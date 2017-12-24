@@ -13,22 +13,22 @@ task :run_example, [:example_name, :options] do |_t, args|
   example = args.example_name
 
   options =
-    if args.options.nil?
-      {}
-    else
-      {}.tap do |hash|
-        args.options.split(';').each do |v|
-          _v = v.split(':')
-          raise Exception, 'options must be in this format: opt1:val1;opt2:val2;...' unless _v.size == 2
-          hash[_v[0]] = _v[1]
-        end
+    args.options.to_s.split(';').map do |v|
+      vs = v.split(':')
+      unless vs.size == 2
+        raise 'options must be in this format: opt1:val1;opt2:val2;...'
       end
-    end
+      [vs[0], vs[1]]
+    end.to_hash
 
   examples_dir = File.join(File.dirname(__FILE__), 'examples')
-  examples = Dir[File.join(examples_dir, '*.sql')].map { |filename| File.basename(filename, '.sql') }
+  examples = Dir[File.join(examples_dir, '*.sql')].map do |filename|
+    File.basename(filename, '.sql')
+  end
 
-  raise Exception, "there is not any example named '#{example}'" unless examples.include? example
+  unless examples.include? example
+    raise Exception, "there is not any example named '#{example}'"
+  end
 
   example_content = open(File.join(examples_dir, "#{example}.sql")).read
 

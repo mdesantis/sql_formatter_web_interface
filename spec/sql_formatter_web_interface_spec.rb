@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string/strip'
+
 RSpec.describe SqlFormatterWebInterface do
   describe '#format' do
     let(:sql) { '' }
@@ -11,25 +13,25 @@ RSpec.describe SqlFormatterWebInterface do
       end
       context 'with a valid sql' do
         let(:sql) do
-          <<-SQL
-select user_id, count(*) as how_many from bboard where
-                   not exists (select 1 from bboard_authorized_maintainers bam
-                   where bam.user_id = bboard.user_id) and posting_time + 60 > sysdate
-                   group by user_id order by how_many desc;
-                   SQL
+          <<-SQL.strip_heredoc
+            select user_id, count(*) as how_many from bboard where
+            not exists (select 1 from bboard_authorized_maintainers bam
+            where bam.user_id = bboard.user_id) and posting_time + 60 > sysdate
+            group by user_id order by how_many desc;
+          SQL
         end
         it 'returns a formatted sql' do
-          expected_output = <<-SQL
-SELECT user_id,
-       count(*) AS how_many
-FROM bboard
-WHERE NOT EXISTS
-    (SELECT 1
-     FROM bboard_authorized_maintainers bam
-     WHERE bam.user_id = bboard.user_id)
-  AND posting_time + 60 > sysdate
-GROUP BY user_id
-ORDER BY how_many DESC;
+          expected_output = <<-SQL.strip_heredoc
+            SELECT user_id,
+                   count(*) AS how_many
+            FROM bboard
+            WHERE NOT EXISTS
+                (SELECT 1
+                 FROM bboard_authorized_maintainers bam
+                 WHERE bam.user_id = bboard.user_id)
+              AND posting_time + 60 > sysdate
+            GROUP BY user_id
+            ORDER BY how_many DESC;
 
           SQL
           expect(subject).to eq expected_output

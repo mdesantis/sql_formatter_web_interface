@@ -1,2 +1,13 @@
-inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRubyVersion: 2.2
 
+Layout/IndentHeredoc:
+  EnforcedStyle: active_support
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/LineLength:
+  Exclude:
+    - sql_formatter_web_interface.gemspec

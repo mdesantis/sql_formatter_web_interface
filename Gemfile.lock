@@ -1,14 +1,23 @@
 PATH
   remote: .
   specs:
-    sql_formatter_web_interface (0.1.0)
+    sql_formatter_web_interface (2.0.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (5.1.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
     ast (2.3.0)
+    concurrent-ruby (1.0.5)
     diff-lcs (1.3)
     heredoc_unindent (1.2.0)
+    i18n (0.9.1)
+      concurrent-ruby (~> 1.0)
+    minitest (5.10.3)
     parallel (1.12.1)
     parser (2.4.0.2)
       ast (~> 2.3)
@@ -36,12 +45,16 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.4)
+      thread_safe (~> 0.1)
     unicode-display_width (1.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (~> 5.1)
   bundler (~> 1.16)
   heredoc_unindent (~> 1.2.0)
   rake (~> 10.0)

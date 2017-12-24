@@ -4,8 +4,10 @@ require 'json'
 
 require 'sql_formatter_web_interface/version'
 
+# Usage: `SqlFormatterWebInterface.new(sql).format(options)`
 class SqlFormatterWebInterface
   API_URI = 'https://sqlformat.org/api/v1/format'.freeze
+  HEADERS = { 'Content-Type' => 'application/x-www-form-urlencoded' }.freeze
 
   def initialize(sql)
     @sql = sql
@@ -18,7 +20,7 @@ class SqlFormatterWebInterface
 
     body = URI.encode_www_form options.merge sql: @sql
 
-    response = https.post(uri.path, body, 'Content-Type' => 'application/x-www-form-urlencoded')
+    response = https.post(uri.path, body, HEADERS)
     JSON.parse(response.body)['result']
   end
 end
