@@ -1,23 +1,9 @@
-require 'echoe'
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
 
-Echoe.new("sql_formatter_web_interface") do |p|
-  p.url         = 'https://github.com/ProGNOMmers/sql_formatter_web_interface'
-  p.project     = 'sql_formatter_web_interface'
-  p.author      = "Maurizio De Santis"
-  p.email       = 'desantis.maurizio@gmail.com'
-  p.description = "SQL formatter web interface - Web interface for SQL formatting"
-  p.summary     = "It lets you format SQL via web SQL formatting services"
-end
+RSpec::Core::RakeTask.new(:spec)
 
-desc 'IRB console'
-task :irb do
-  $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
-  # require 'sql_formatter_web_interface'
-  require 'sql_formatter_web_interface/to_formatted_sql'
-  require 'irb'
-  ARGV.clear
-  IRB.start
-end
+task :default => :spec
 
 desc 'run example'
 task :run_example, [:example_name, :options] do |t, args|
@@ -26,12 +12,12 @@ task :run_example, [:example_name, :options] do |t, args|
 
   example = args.example_name
 
-  options = 
+  options =
     if args.options.nil?
       {}
     else
       {}.tap do |hash|
-        args.options.split(';').each do |v| 
+        args.options.split(';').each do |v|
           _v = v.split(':')
           raise Exception, 'options must be in this format: opt1:val1;opt2:val2;...' unless _v.size == 2
           hash[_v[0]] = _v[1]

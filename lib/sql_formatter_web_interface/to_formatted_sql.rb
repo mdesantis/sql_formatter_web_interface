@@ -1,6 +1,6 @@
 require 'sql_formatter_web_interface'
 
-module SqlFormatterWebInterface
+class SqlFormatterWebInterface
   # Includes the {InstanceMethods#to_formatted_sql} method in the `String` class
   module ToFormattedSql
     def self.included(klass)
@@ -11,7 +11,7 @@ module SqlFormatterWebInterface
       # It calls SqlFormatterWebInterface#format using `self` for `sql`
       # @see SqlFormatterWebInterface#format
       def to_formatted_sql(options = {})
-        SqlFormatterWebInterface.format(self, options)
+        SqlFormatterWebInterface.new(self).format(options)
       end
     end
   end
