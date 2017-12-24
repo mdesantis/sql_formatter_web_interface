@@ -89,7 +89,7 @@ require 'sql_formatter_web_interface/to_formatted_sql'
 # Where id = 123;
 ```
 
-Formatting happens making a request to an online SQL formatting service (http://sqlformat.appspot.com/format/ is the only supported at the moment).
+Formatting happens making a request to an online SQL formatting service (https://sqlformat.org/api/ is the only supported at the moment).
 
 ## Usage
 

@@ -6,7 +6,7 @@ RSpec.describe SqlFormatterWebInterface do
     subject { SqlFormatterWebInterface.new(sql).format(options) }
 
     context 'with a reachable url' do
-      it "returns a String" do
+      it 'returns a String' do
         expect(SqlFormatterWebInterface.new('').format).to be_a String
       end
       context 'with a valid sql' do
@@ -18,7 +18,7 @@ select user_id, count(*) as how_many from bboard where
                    group by user_id order by how_many desc;
                    SQL
         end
-        it "returns a formatted sql" do
+        it 'returns a formatted sql' do
           expected_output = <<-SQL
 SELECT user_id,
        count(*) AS how_many
@@ -38,7 +38,7 @@ ORDER BY how_many DESC;
       context 'with an invalid sql' do
         let(:sql) { 'invalid blah blah blah!' }
 
-        it "returns the same string as the input" do
+        it 'returns the same string as the input' do
           expect(subject).to eq sql
         end
       end

@@ -1,12 +1,12 @@
-require "bundler/gem_tasks"
-require "rspec/core/rake_task"
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => :spec
+task default: :spec
 
 desc 'run example'
-task :run_example, [:example_name, :options] do |t, args|
+task :run_example, [:example_name, :options] do |_t, args|
   $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
   require 'sql_formatter_web_interface'
 
@@ -33,5 +33,4 @@ task :run_example, [:example_name, :options] do |t, args|
   example_content = open(File.join(examples_dir, "#{example}.sql")).read
 
   puts SqlFormatterWebInterface.format(example_content, options)
-
 end
